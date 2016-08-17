@@ -12,18 +12,13 @@ class Solution(object):
 		if root == None:
 			return False
 		
-		if root.left != None and root.right != None:
-			self.hasPathSum(root.left, sum - root.val)
-			self.hasPathSum(root.right, sum - root.val)
-		elif root.left == None and root.right != None:
-			self.hasPathSum(root.right, sum - root.val)
-		elif root.left != None and root.right == None:
-			self.hasPathSum(root.left, sum - root.val)
-		else:
+		if root.left == None and root.right == None:
 			if sum == root.val:
 				return True
 			else:
 				return False
+		else:
+			return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
 			
 solu = Solution()
 
@@ -37,4 +32,4 @@ root.left.left = TreeNode(11)
 root.left.left.left = TreeNode(7)
 root.left.left.right = TreeNode(2)
 
-print(solu.hasPathSum(root, 22))
+print(solu.hasPathSum(root, 23))
