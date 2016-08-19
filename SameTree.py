@@ -13,14 +13,15 @@ class Solution(object):
 		pVals = self.trValueArray(p)
 		qVals = self.trValueArray(q)
 	
-		if pVals == [] or qVals == []:
-			if pVals == [] and qVals == []:
-				return True
-	    	else:
-	        	return False
+		if pVals == [] and qVals == []:
+			return True
+		elif pVals == [] and qVals != []:
+			return False
+		elif pVals != [] and qVals == []:
+			return False
 		
 		if len(pVals) != len(qVals):
-		    return False
+			return False
 		for i in range(len(pVals)):
 			if pVals[i] != qVals[i]:
 				return False
@@ -28,7 +29,7 @@ class Solution(object):
 		return True
 		
 	def trValueArray(self, p):
-		if p == []:
+		if p == [] or p == None:
 			return []
 		
 		nodes = [p]
@@ -70,4 +71,4 @@ q.right = TreeNode(3)
 q.left.right = TreeNode(5)
 q.right.left = TreeNode(6)
 
-print(solu.isSameTree([], []))
+print(solu.isSameTree([],[]))
